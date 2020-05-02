@@ -17,7 +17,8 @@ class Hours extends React.Component {
             { dt: 1588420000, temp_min: 385, temp_max: 7005, day: "Fri", icon: "10d" },
             { dt: 1588410000, temp_min: 35, temp_max: 7, day: "Fri", icon: "10d" },
             { dt: 1588410000, temp_min: 5, temp_max: 7, day: "Fri", icon: "10n" },
-            { dt: 1588064400, temp_min: 85, temp_max: 7, day: "Fri", icon: "10d" }
+            { dt: 1588064400, temp_min: 85, temp_max: 7, day: "Fri", icon: "10d" },
+            { dt: 1588064400, temp_min: 8, temp_max: 70, day: "Fri", icon: "10d" }
         ]
     };
     // key(Hour) {
