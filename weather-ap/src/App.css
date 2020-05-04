@@ -96,3 +96,11 @@ hour component
     background-color: rgb(162, 195, 196);
     overflow-y: scroll;
 }
+.hourbox1 {
+    height: max-content;
+    margin-top: 1em;
+    padding: 1em;
+    background-color: rgb(162, 195, 196);
+    display: flex;
+    justify-content: center;
+}

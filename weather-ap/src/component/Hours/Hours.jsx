@@ -19,13 +19,23 @@ class Hours extends React.Component {
         const currenthr = this.state.Hours.filter(
             hour => day === new Date(hour.dt * 1000).toLocaleString("en-US", { day: "numeric" })
         );
-        return (
-            <div className="hourbox">
-                {currenthr.map(hour => (
-                    <Hour key={hour.dt} hour={hour} />
-                ))}
-            </div>
-        );
+        console.log(currenthr);
+
+        if (currenthr.length === 0) {
+            return (
+                <div className="hourbox1">
+                    <h1> No hourly data available</h1>
+                </div>
+            );
+        } else {
+            return (
+                <div className="hourbox">
+                    {currenthr.map(hour => (
+                        <Hour key={hour.dt} hour={hour} />
+                    ))}
+                </div>
+            );
+        }
     }
 }
 export default Hours;
