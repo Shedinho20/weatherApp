@@ -1,19 +1,32 @@
 import React from "react";
 
 class Day extends React.Component {
-    state = {};
+    converter = temp => {
+        return (temp - 273).toFixed(0);
+    };
+    day = dt => {
+        return new Date(dt * 1000).toLocaleString("en-US", { weekday: "short" });
+    };
+
+    dayNum = dt => {
+        return new Date(dt * 1000).toLocaleString("en-US", { day: "numeric" });
+    };
     render() {
-        const { temp_max, temp_min, day, icon } = this.props.day;
+        const { max, min } = this.props.day.temp;
+        const { dt } = this.props.day;
+        const { icon } = this.props.day.weather[0];
         return (
             <div className="Box">
-                <h3>{day}</h3>
+                <h3>
+                    {this.day(dt)}, {this.dayNum(dt)}
+                </h3>
                 <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon"></img>
                 <div id="temp">
                     <div className="temp">
-                        {temp_max} <span>°C</span>
+                        {this.converter(max)} <span>°C</span>
                     </div>
                     <div className="tempMin">
-                        {temp_min} <span>°C</span>
+                        {this.converter(min)} <span>°C</span>
                     </div>
                 </div>
             </div>

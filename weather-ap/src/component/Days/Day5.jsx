@@ -5,13 +5,16 @@ import { NavLink as Link } from "react-router-dom";
 class Day5 extends React.Component {
     render() {
         const day = this.props.days[4];
-        return (
-            <div style={this.getStyle()}>
-                <Link key={day.dt} to={`/day${day.dt}`} activeClassName="active">
-                    <Day day={day} />
-                </Link>
-            </div>
-        );
+        if (day == null) return null;
+        else {
+            return (
+                <div style={this.getStyle()}>
+                    <Link key={day.dt} to={`/day${day.dt}`} activeClassName="active">
+                        <Day day={day} />
+                    </Link>
+                </div>
+            );
+        }
     }
     getStyle = () => {
         return {
