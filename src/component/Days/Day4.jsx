@@ -8,7 +8,7 @@ class Day4 extends React.Component {
         if (day == null) return null;
         else {
             return (
-                <div style={this.getStyle()}>
+                <div className="box">
                     <Link key={day.dt} to={`/day${day.dt}`} activeClassName="active">
                         <Day day={day} />
                     </Link>
@@ -16,12 +16,6 @@ class Day4 extends React.Component {
             );
         }
     }
-    getStyle = () => {
-        return {
-            display: "flex",
-            justifyContent: "center"
-        };
-    };
 }
 
 export default Day4;

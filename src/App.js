@@ -1,18 +1,16 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Day1 from "./component/Days/Day1";
-import Day2 from "./component/Days/Day2";
-import Day3 from "./component/Days/Day3";
-import Day4 from "./component/Days/Day4";
-import Day5 from "./component/Days/Day5";
-import Hours from "./component/Hours/Hours";
-import Location from "./component/place";
+import Navbar from "./component/Navbar/Navbar";
+import Home from "./component/Home";
+import Weekly from "./component/Weekly";
 class App extends React.Component {
     state = {
         days: [],
         Hours: [],
-        Timezone: ""
+        current: [],
+        Timezone: "",
+        currentWeather: [],
     };
 
     componentDidMount() {
@@ -32,14 +30,15 @@ class App extends React.Component {
         const res = await fetch(url);
         const data = await res.json();
         const daily = data.daily;
+
         const dailyneed = this.dailyfilter(daily);
         this.weatherDataSeter(data, dailyneed);
     };
 
     // filter all the daily data gotten from the API to collect just 5
-    dailyfilter = daily => {
+    dailyfilter = (daily) => {
         let dailyneed = [];
-        daily.forEach(element => {
+        daily.forEach((element) => {
             if (dailyneed.length < 5) {
                 dailyneed.push(element);
             }
@@ -59,12 +58,75 @@ class App extends React.Component {
         this.setState({ days: dailyneed });
         this.setState({ Timezone: data.timezone });
         this.setState({ Hours: data.hourly });
+        this.setState({ current: data.current });
+        this.setState({ currentWeather: data.current.weather[0] });
     };
 
+    converter = (temp) => {
+        return (temp - 273).toFixed(0);
+    };
+
+    time = (dt) => {
+        return new Date(dt * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
+    };
+    date = (dt) => {
+        return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    };
+
+    Weekday = (dt) => {
+        return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long" });
+    };
+
+    wind_speed = (wind_speed) => {
+        return parseFloat(wind_speed).toFixed(1);
+    };
+
+    Location = (loc) => {
+        const b = loc.split("");
+        let place = null;
+        b.forEach((element, index) => {
+            if (element === "/") {
+                place = loc.slice(index + 1);
+            }
+        });
+        return place;
+    };
     render() {
         return (
             <Router>
-                <div className="App">
+                <Navbar Location={this.Location} Timezone={this.state.Timezone} />
+                <Switch>
+                    <Route
+                        path="/"
+                        exact
+                        component={(props) => (
+                            <Home
+                                {...props}
+                                current={this.state.current}
+                                currentWeather={this.state.currentWeather}
+                                Timezone={this.state.Timezone}
+                                converter={this.converter}
+                                time={this.time}
+                                date={this.date}
+                                wind_speed={this.wind_speed}
+                                Location={this.Location}
+                            />
+                        )}
+                    />
+                    <Route
+                        path="/Weekly"
+                        component={() => (
+                            <Weekly
+                                days={this.state.days}
+                                Hours={this.state.Hours}
+                                converter={this.converter}
+                                Weekday={this.Weekday}
+                                wind_speed={this.wind_speed}
+                            />
+                        )}
+                    />
+                </Switch>
+                {/* <div className="App">
                     <Location Timezone={this.state.Timezone} />
                     <div className="navBar">
                         <Day1 days={this.state.days} />
@@ -76,7 +138,7 @@ class App extends React.Component {
                     <Switch>
                         <Route path="/day:dt" component={props => <Hours {...props} Hours={this.state.Hours} />} />
                     </Switch>
-                </div>
+                </div> */}
             </Router>
         );
     }

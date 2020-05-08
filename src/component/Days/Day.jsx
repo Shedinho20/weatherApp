@@ -1,5 +1,4 @@
 import React from "react";
-
 class Day extends React.Component {
     converter = (temp) => {
         return (temp - 273).toFixed(0);
@@ -22,14 +21,9 @@ class Day extends React.Component {
                     {this.day(dt)}, {this.dayNum(dt)}
                 </h3>
                 <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon"></img>
-                <div id="temp">
-                    <div className="temp">
-                        {this.converter(max)} <span>°C</span>
-                    </div>
-                    <div className="tempMin">
-                        {this.converter(min)} <span>°C</span>
-                    </div>
-                </div>
+                <h2>
+                    {this.converter(max)} <span>°C</span>
+                </h2>
             </div>
         );
     }
