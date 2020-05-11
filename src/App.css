@@ -4,10 +4,9 @@
     box-sizing: border-box;
 }
 .App {
-    width: 60vw;
-    min-width: 700px;
-    margin: 0 auto;
-    padding-top: 2em;
+    width: 100vw;
+    height: 100vh;
+    /* min-width: 700px; */
 }
 .secColor {
     color: #ffc93d;
@@ -19,14 +18,13 @@ ul {
     list-style: none;
 }
 
-.active {
-    background-color: rgba(250, 235, 215, 0.906);
-    box-shadow: 0 0 10px #000000;
-}
-
 .navBar {
     display: flex;
     justify-content: space-between;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 /* ============
 Day component 
@@ -35,41 +33,44 @@ Day component
 /* ============
 hour component 
 ===============*/
-#hour {
-    width: 100%;
-    background-color: rgb(245, 219, 198);
+
+/* #hour {
+    width: 20%;
+    background-color: rgba(249, 210, 179, 0.262);
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-direction: column;
     margin-bottom: 0.5em;
 }
 
 #hour img {
-    width: 8%;
+    width: 50%;
 }
 
 #tempHr {
     display: flex;
     justify-content: space-between;
     width: 20%;
-}
+} */
 
-.hourbox {
+/* .hourbox {
     height: max-content;
     max-height: 300px;
-    margin-top: 1em;
-    /* padding-top: 0.5em; */
-    background-color: rgb(162, 195, 196);
+    margin-top: 15%;
+    width: 50%;
+    margin-left: 5%;
+    position: absolute;
     overflow-y: scroll;
 }
 .hourbox1 {
     height: max-content;
-    margin-top: 1em;
+    margin-top: 10em;
     padding: 1em;
     background-color: rgb(162, 195, 196);
     display: flex;
     justify-content: center;
-}
+} */
 
 .location {
     font-size: 2.5rem;
@@ -143,13 +144,14 @@ Home
 */
 
 .home {
-    height: 100vh;
     background-image: url(./BG/bg-1.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 #weatherHome {
@@ -268,30 +270,41 @@ Weekly
 */
 
 .weekly {
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     background-image: url(./BG/bg-1.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    /* align-items: center; */
 }
 
 .WeeklyNav {
     background-color: rgba(255, 255, 255, 0.146);
-    padding-left: 5%;
     height: 25%;
     display: flex;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .day1 {
     display: flex;
     align-items: center;
-    padding: 1em 0;
+    padding-left: 5%;
+    padding-top: 1em;
+    padding-bottom: 1em;
     width: 30%;
     height: 100%;
+    cursor: pointer;
 }
+
+/* .day1:hover {
+    background-color: rgba(240, 230, 140, 0.434);
+} */
 
 #day1maxTemp {
     justify-content: center;
@@ -345,12 +358,15 @@ Weekly
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
     height: 100%;
     width: 100%;
     padding: 2em 0;
     border-left: 1px solid rgba(255, 255, 255, 0.228);
 }
-
+/* .Box:hover {
+    background-color: rgba(240, 230, 140, 0.434);
+} */
 .Box img {
     width: 30%;
     margin: 1em 0;
@@ -371,4 +387,45 @@ Weekly
     color: rgba(255, 255, 255, 0.831);
     font-weight: 300;
     font-size: 1rem;
+}
+
+/* Hour============= */
+.Hour {
+    display: flex;
+    padding: 2em;
+    overflow-x: scroll;
+    width: 75%;
+    height: 40%;
+    margin-top: 15%;
+}
+
+.BoxHour {
+    background-color: #bdc3c745;
+    height: max-content;
+    padding: 1em 2em;
+    margin-right: 3em;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 0 10px #000000;
+}
+
+.BoxHour h3 {
+    padding: 0.3em 1em;
+    border-radius: 50px;
+    background-color: rgb(138, 138, 138);
+    color: rgba(255, 255, 255, 0.536);
+    font-weight: 300;
+    font-size: 0.8rem;
+}
+
+.BoxHour h2 {
+    color: rgba(255, 255, 255, 0.831);
+    font-weight: 300;
+    font-size: 1rem;
+}
+
+.BoxHour img {
+    margin: 0.5em 0;
 }

@@ -93,40 +93,42 @@ class App extends React.Component {
     };
     render() {
         return (
-            <Router>
-                <Navbar Location={this.Location} Timezone={this.state.Timezone} />
-                <Switch>
-                    <Route
-                        path="/"
-                        exact
-                        component={(props) => (
-                            <Home
-                                {...props}
-                                current={this.state.current}
-                                currentWeather={this.state.currentWeather}
-                                Timezone={this.state.Timezone}
-                                converter={this.converter}
-                                time={this.time}
-                                date={this.date}
-                                wind_speed={this.wind_speed}
-                                Location={this.Location}
-                            />
-                        )}
-                    />
-                    <Route
-                        path="/Weekly"
-                        component={() => (
-                            <Weekly
-                                days={this.state.days}
-                                Hours={this.state.Hours}
-                                converter={this.converter}
-                                Weekday={this.Weekday}
-                                wind_speed={this.wind_speed}
-                            />
-                        )}
-                    />
-                </Switch>
-                {/* <div className="App">
+            <div className="App">
+                <Router>
+                    <Navbar Location={this.Location} Timezone={this.state.Timezone} />
+                    <Switch>
+                        <Route
+                            path="/"
+                            exact
+                            component={(props) => (
+                                <Home
+                                    {...props}
+                                    current={this.state.current}
+                                    currentWeather={this.state.currentWeather}
+                                    Timezone={this.state.Timezone}
+                                    converter={this.converter}
+                                    time={this.time}
+                                    date={this.date}
+                                    wind_speed={this.wind_speed}
+                                    Location={this.Location}
+                                />
+                            )}
+                        />
+                        <Route
+                            strict
+                            path="/Weekly"
+                            component={() => (
+                                <Weekly
+                                    days={this.state.days}
+                                    Hours={this.state.Hours}
+                                    converter={this.converter}
+                                    Weekday={this.Weekday}
+                                    wind_speed={this.wind_speed}
+                                />
+                            )}
+                        />
+                    </Switch>
+                    {/* <div className="App">
                     <Location Timezone={this.state.Timezone} />
                     <div className="navBar">
                         <Day1 days={this.state.days} />
@@ -139,7 +141,8 @@ class App extends React.Component {
                         <Route path="/day:dt" component={props => <Hours {...props} Hours={this.state.Hours} />} />
                     </Switch>
                 </div> */}
-            </Router>
+                </Router>
+            </div>
         );
     }
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import Day from "./Day";
-// import { NavLink as Link } from "react-router-dom";
 
 class Day1 extends React.Component {
     render() {
@@ -11,7 +9,7 @@ class Day1 extends React.Component {
             const { dt, wind_speed } = day;
             const { icon } = day.weather[0];
             return (
-                <div className="day1">
+                <div className="day1" onClick={() => this.props.keyClicked(dt)} style={this.getStyle()}>
                     <div id="day1maxTemp">
                         <h1>{this.props.converter(max)}°C</h1>
                         <h3> {this.props.Weekday(dt)}</h3>
@@ -27,6 +25,12 @@ class Day1 extends React.Component {
             );
         }
     }
+    getStyle = () => {
+        if (this.props.info == this.props.days[0].dt)
+            return {
+                backgroundColor: "#ffc93d",
+            };
+    };
 }
 
 export default Day1;

@@ -11,7 +11,7 @@ class Day extends React.Component {
         return new Date(dt * 1000).toLocaleString("en-US", { day: "numeric" });
     };
     render() {
-        const { max, min } = this.props.day.temp;
+        const { max } = this.props.day.temp;
         const { dt } = this.props.day;
         const { icon } = this.props.day.weather[0];
 
