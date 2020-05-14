@@ -108,6 +108,10 @@ Navabar
     font-weight: 700;
 }
 
+#menu-BTN {
+    display: none;
+}
+
 .btn {
     display: flex;
     color: brown;
@@ -264,7 +268,8 @@ Home
 }
 
 /*=============
-Weekly
+
+
 =========
 ////
 */
@@ -394,6 +399,7 @@ Weekly
     display: flex;
     padding: 2em;
     overflow-x: scroll;
+    /* scrollbar-color: rebeccapurple green; */
     width: 75%;
     height: 40%;
     margin-top: 15%;
@@ -428,4 +434,139 @@ Weekly
 
 .BoxHour img {
     margin: 0.5em 0;
+}
+
+/* ==========
+=======
+==========
+=========
+Mobile device ======
+========
+========
+*/
+
+#menu {
+    cursor: pointer;
+    display: none;
+}
+
+.hamBurger {
+    height: 3px;
+    width: 25px;
+    background-color: #e61d1d;
+    border-radius: 100px;
+    margin-bottom: 4px;
+    transition: 0.3s ease-in;
+    z-index: 3;
+}
+
+@media (max-width: 1030px) {
+    html {
+        font-size: 10px;
+    }
+    #menu {
+        display: block;
+    }
+
+    .navBox img {
+        width: 4%;
+    }
+    .navBox ul {
+        display: none;
+    }
+    #menu-BTN {
+        background-color: rgba(138, 138, 138, 0.92);
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        padding: 3em 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        /* z-index: 1; */
+        /* margin-top: 2em; */
+
+        /* padding: 2em 0em; */
+        transform: translatex(-550px);
+        transition: 0.1s ease-in-out;
+        /* height: 16%; */
+        border-bottom-right-radius: 20px;
+    }
+
+    #locationNav {
+        margin-left: 0;
+        margin-top: 15em;
+        width: 40%;
+    }
+
+    .btn {
+        width: 40%;
+    }
+
+    #weatherHome {
+        margin-top: 40%;
+    }
+
+    #weatherHome2 {
+        width: 80%;
+    }
+
+    #weatherHome2 h2 {
+        margin-top: 0.9em;
+    }
+
+    .WeeklyNav {
+        height: 15%;
+    }
+
+    .Hour {
+        height: 20%;
+        margin-top: 40%;
+    }
+}
+
+@media (min-width: 1900px) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 750px) {
+    html {
+        font-size: 6px;
+    }
+    #weatherHome {
+        margin-top: 60%;
+    }
+
+    #weatherHome2 {
+        width: 95%;
+    }
+    #infoHomeInner1 {
+        margin-right: 1em;
+    }
+
+    .Hour {
+        height: 25%;
+        margin-top: 60%;
+    }
+    .BoxHour {
+        border-radius: 20px;
+    }
+
+    .WeeklyNav {
+        height: 12%;
+    }
+}
+
+@media (max-width: 350px) {
+    html {
+        font-size: 5px;
+    }
+    .Hour {
+        height: 35%;
+        margin-top: 50%;
+    }
 }
