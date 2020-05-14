@@ -6,7 +6,6 @@
 .App {
     width: 100vw;
     height: 100vh;
-    /* min-width: 700px; */
 }
 .secColor {
     color: #ffc93d;
@@ -95,6 +94,7 @@ Navabar
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 2;
     /* background-color: aqua; */
 }
 
@@ -156,6 +156,8 @@ Home
     flex-direction: column;
     height: 100%;
     width: 100%;
+    position: fixed;
+    overflow: scroll;
 }
 
 #weatherHome {
@@ -275,15 +277,15 @@ Home
 */
 
 .weekly {
-    height: 100%;
-    width: 100%;
     background-image: url(./BG/bg-1.png);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    height: 100%;
+    width: 100%;
+    position: fixed;
 }
 
 .WeeklyNav {
@@ -475,6 +477,7 @@ Mobile device ======
         display: none;
     }
     #menu-BTN {
+        z-index: 2;
         background-color: rgba(138, 138, 138, 0.92);
         position: absolute;
         width: 50%;
