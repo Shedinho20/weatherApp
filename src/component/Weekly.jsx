@@ -24,20 +24,22 @@ class Weekly extends React.Component {
 
         return (
             <div className="weekly">
-                <div className="Hour">
-                    {hours.map((hour) => (
-                        <Hour hour={hour} key={hour.dt} />
-                    ))}
-                </div>
-                <div>
-                    <NavbarWeekly
-                        keyClicked={this.key}
-                        info={this.state.info}
-                        days={this.props.days}
-                        converter={this.props.converter}
-                        Weekday={this.props.Weekday}
-                        wind_speed={this.props.wind_speed}
-                    />
+                <div className="weeklybanner">
+                    <div className="Hour">
+                        {hours.map((hour) => (
+                            <Hour hour={hour} key={hour.dt} />
+                        ))}
+                    </div>
+                    <div>
+                        <NavbarWeekly
+                            keyClicked={this.key}
+                            info={this.state.info}
+                            days={this.props.days}
+                            converter={this.props.converter}
+                            Weekday={this.props.Weekday}
+                            wind_speed={this.props.wind_speed}
+                        />
+                    </div>
                 </div>
             </div>
         );

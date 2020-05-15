@@ -90,7 +90,7 @@ Navabar
     width: 90%;
     right: 5%;
     top: 5%;
-    position: absolute;
+    position: fixed;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -154,18 +154,20 @@ Home
     background-repeat: no-repeat;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 100%;
     width: 100%;
-    position: fixed;
-    overflow: scroll;
+}
+.homeBanner {
+    height: 30%;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 #weatherHome {
-    height: 10%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    margin-top: 20%;
+    height: 40%;
     padding-left: 5%;
 }
 
@@ -183,11 +185,12 @@ Home
 }
 
 #weatherHome2 {
-    height: 20%;
+    height: 60%;
     display: flex;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     align-items: center;
     width: 65%;
+    /* padding: 2em 0; */
     padding-left: 5%;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
@@ -282,20 +285,24 @@ Home
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
-    justify-content: center;
+    align-items: flex-end;
     height: 100%;
     width: 100%;
-    position: fixed;
+}
+.weeklybanner {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
 }
 
 .WeeklyNav {
     background-color: rgba(255, 255, 255, 0.146);
-    height: 25%;
+    /* height: 25%; */
     display: flex;
     width: 100%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 }
 
 .day1 {
@@ -403,8 +410,8 @@ Home
     overflow-x: scroll;
     /* scrollbar-color: rebeccapurple green; */
     width: 75%;
-    height: 40%;
-    margin-top: 15%;
+    height: 50%;
+    margin: auto;
 }
 
 .BoxHour {
@@ -462,7 +469,7 @@ Mobile device ======
     z-index: 3;
 }
 
-@media (max-width: 1030px) {
+@media (max-width: 1200px) {
     html {
         font-size: 10px;
     }
@@ -479,9 +486,9 @@ Mobile device ======
     #menu-BTN {
         z-index: 2;
         background-color: rgba(138, 138, 138, 0.92);
-        position: absolute;
-        width: 50%;
-        height: 50%;
+        position: fixed;
+        width: 300px;
+        height: 400px;
         padding: 3em 0;
         left: 0;
         display: flex;
@@ -509,7 +516,7 @@ Mobile device ======
     }
 
     #weatherHome {
-        margin-top: 40%;
+        /* margin-top: 40%; */
     }
 
     #weatherHome2 {
@@ -520,14 +527,14 @@ Mobile device ======
         margin-top: 0.9em;
     }
 
-    .WeeklyNav {
+    /* .WeeklyNav {
         height: 15%;
-    }
+    } */
 
-    .Hour {
+    /* .Hour {
         height: 20%;
         margin-top: 40%;
-    }
+    } */
 }
 
 @media (min-width: 1900px) {
@@ -541,7 +548,7 @@ Mobile device ======
         font-size: 6px;
     }
     #weatherHome {
-        margin-top: 60%;
+        /* margin-top: 60%; */
     }
 
     #weatherHome2 {
@@ -551,25 +558,25 @@ Mobile device ======
         margin-right: 1em;
     }
 
-    .Hour {
+    /* .Hour {
         height: 25%;
         margin-top: 60%;
-    }
+    } */
     .BoxHour {
         border-radius: 20px;
     }
 
-    .WeeklyNav {
+    /* .WeeklyNav {
         height: 12%;
-    }
+    } */
 }
 
 @media (max-width: 350px) {
     html {
         font-size: 5px;
     }
-    .Hour {
+    /* .Hour {
         height: 35%;
         margin-top: 50%;
-    }
+    } */
 }
