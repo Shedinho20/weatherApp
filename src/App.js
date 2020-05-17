@@ -128,19 +128,6 @@ class App extends React.Component {
                             )}
                         />
                     </Switch>
-                    {/* <div className="App">
-                    <Location Timezone={this.state.Timezone} />
-                    <div className="navBar">
-                        <Day1 days={this.state.days} />
-                        <Day2 days={this.state.days} />
-                        <Day3 days={this.state.days} />
-                        <Day4 days={this.state.days} />
-                        <Day5 days={this.state.days} />
-                    </div>
-                    <Switch>
-                        <Route path="/day:dt" component={props => <Hours {...props} Hours={this.state.Hours} />} />
-                    </Switch>
-                </div> */}
                 </Router>
             </div>
         );

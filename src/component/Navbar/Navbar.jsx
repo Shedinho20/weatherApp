@@ -32,6 +32,8 @@ class Navbar extends React.Component {
     getStyleLine3 = () => {
         if (this.state.Isopen)
             return {
+                zIndex: "3",
+
                 transform: "rotate(-45deg) translate(5px, -5px)",
             };
     };
