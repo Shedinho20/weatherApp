@@ -1,26 +1,23 @@
 import React from "react";
 import Day from "./Day";
-import { NavLink as Link } from "react-router-dom";
 
 class Day2 extends React.Component {
     render() {
-        const day = this.props.days[1];
+        const day = this.props.day;
         if (day == null) return null;
         else {
             return (
-                <div style={this.getStyle()}>
-                    <Link key={day.dt} to={`/day${day.dt}`} activeClassName="active">
-                        <Day day={day} />
-                    </Link>
+                <div className="box" onClick={() => this.props.keyClicked(day.dt)} style={this.getStyle()}>
+                    <Day day={this.props.day} />
                 </div>
             );
         }
     }
     getStyle = () => {
-        return {
-            display: "flex",
-            justifyContent: "center"
-        };
+        if (this.props.info == this.props.day.dt)
+            return {
+                backgroundColor: "#ffc93d",
+            };
     };
 }
 
