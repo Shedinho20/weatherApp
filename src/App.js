@@ -30,7 +30,6 @@ class App extends React.Component {
         const res = await fetch(url);
         const data = await res.json();
         const daily = data.daily;
-
         const dailyneed = this.dailyfilter(daily);
         this.weatherDataSeter(data, dailyneed);
     };
