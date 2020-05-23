@@ -1,6 +1,7 @@
 import React from "react";
 import NavbarWeekly from "./Navbar/NavbarWeekly";
 import Hour from "./Hours/Hour";
+
 class Weekly extends React.Component {
     state = {
         info: "",
@@ -23,20 +24,24 @@ class Weekly extends React.Component {
         const hours = this.hours();
 
         return (
-            <div className="weekly">
-                <div className="Hour">
-                    {hours.map((hour) => (
-                        <Hour hour={hour} key={hour.dt} />
-                    ))}
+            <div className=" weekly">
+                <div className="container ">
+                    <div>
+                        <div className="Hour">
+                            {hours.map((hour) => (
+                                <Hour hour={hour} key={hour.dt} />
+                            ))}
+                        </div>
+                        <NavbarWeekly
+                            keyClicked={this.key}
+                            info={this.state.info}
+                            days={this.props.days}
+                            converter={this.props.converter}
+                            Weekday={this.props.Weekday}
+                            wind_speed={this.props.wind_speed}
+                        />
+                    </div>
                 </div>
-                <NavbarWeekly
-                    keyClicked={this.key}
-                    info={this.state.info}
-                    days={this.props.days}
-                    converter={this.props.converter}
-                    Weekday={this.props.Weekday}
-                    wind_speed={this.props.wind_speed}
-                />
             </div>
         );
     }

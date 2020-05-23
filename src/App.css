@@ -1,38 +1,334 @@
+:root {
+    --mainRed: rgb(152, 30, 9);
+    --mainblue: rgb(4, 39, 70);
+    --mainYellow: rgb(198, 153, 5);
+    --mainWhite: rgba(0, 0, 0, 0.5);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.App {
-    background-image: url(./BG/bg-1.png);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vw;
-}
+
 .secColor {
     color: #ffc93d;
 }
 a {
     text-decoration: none;
 }
+
+.Link,
+li {
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: rgb(245, 245, 245);
+    font-size: 100;
+}
 ul {
     list-style: none;
 }
 
-.navBar {
-    display: flex;
-    justify-content: space-between;
+.bg-col {
+    background-color: var(--mainblue);
+    position: sticky;
+    top: 0;
+}
+.bg-col1 {
+    background-color: var(--mainWhite);
 }
 
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-/* ============
-Day component 
-===============*/
+.container {
+    max-width: 1500px;
+    padding: 0 5vw;
+    margin: auto;
+}
+button:focus {
+    outline: none;
+}
 
-/* ============
-hour component 
+.btn li {
+    color: var(--mainRed);
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+/* ========Navbar======= */
+#menu-BTN {
+    display: none;
+}
+#menu {
+    display: none;
+}
+.navBox #logo {
+    width: 4%;
+}
+
+.navBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8em 0;
+    width: 100%;
+    align-items: center;
+}
+
+.navBar {
+    align-items: center;
+    width: 80%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+#locationNav {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#locationNav img {
+    width: 10px;
+}
+#locationNav button {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0.5em 1.5em;
+    font-size: 1rem;
+    background-color: var(--mainYellow);
+    color: var(--mainRed);
+    border: 1px solid var(--mainRed);
+}
+
+/* ========Home======= */
+
+.home {
+    background-image: url(./BG/bg-1.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 110vh;
+}
+
+.homeBanner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+    padding-top: 10%;
+}
+
+#weatherHome {
+    height: 25%;
+    color: white;
+}
+
+#weatherHome h2 {
+    font-size: 2rem;
+    padding-top: 0.2em;
+    letter-spacing: 0.1em;
+}
+#weatherHome2 {
+    width: 90%;
+    padding: 1em 0;
+    padding-right: 2em;
+    display: grid;
+    background-color: var(--mainWhite);
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#weatherHome2 h3 {
+    color: rgba(255, 255, 255, 0.664);
+    font-size: 1rem;
+    margin: 0.5em 0;
+}
+#weatherHome2 h2 {
+    color: var(--mainYellow);
+    font-size: 0.8rem;
+    margin: 0.5em 0;
+}
+
+.weatherHome2 {
+    border-left: 0.5px solid rgba(128, 128, 128, 0.262);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#infoHomeInner {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+#infoHomeInner1 {
+    padding-bottom: 30%;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border-left: 0.5px solid rgba(128, 128, 128, 0.262);
+}
+
+#infoHomeInner1 img {
+    width: 80%;
+}
+#infoHomeInner img {
+    width: 50%;
+}
+#main {
+    padding-left: 2em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#main h1 {
+    color: white;
+    font-size: 3rem;
+    margin-bottom: 0.1em;
+}
+/* ========skeleton======= */
+.skeletonInner {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border-radius: 100%;
+    /* background-color: honeydew; */
+    animation: animate2 0.22s forwards ease-out infinite;
+}
+.skeleton {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.694);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: animate1 10s forwards ease-in-out infinite;
+}
+.loader {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background-color: gray;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: animate1 1s forwards ease-in-out infinite;
+}
+
+@keyframes animate1 {
+    25% {
+        background-color: rgb(215, 211, 211);
+    }
+    50% {
+        background-color: rgb(189, 182, 182);
+    }
+    75% {
+        background-color: rgb(241, 234, 234);
+    }
+}
+
+@keyframes animate2 {
+    25% {
+        transform: rotate(90deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* ========weekly======= */
+
+.WeeklyNav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--mainWhite);
+}
+
+.weekly {
+    background-image: url(./BG/bg-1.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+}
+
+.Box {
+    padding-top: 2em;
+    padding-bottom: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid rgba(128, 128, 128, 0.249);
+}
+.Box h3 {
+    font-size: 1.2rem;
+    color: white;
+}
+.Box h2 {
+    font-size: 1rem;
+    color: var(--mainYellow);
+}
+.Box img {
+    width: 40%;
+}
+
+.Hour {
+    display: flex;
+    overflow: scroll;
+    height: 70%;
+    padding: 10% 2em 2em 2em;
+    /* background-color: rgb(245, 245, 245); */
+}
+.BoxHour {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--mainWhite);
+    margin-right: 1.5em;
+    padding: 2em 1em;
+    border-radius: 10px;
+}
+.BoxHour h3 {
+    font-size: 1.2rem;
+    color: white;
+}
+.BoxHour h2 {
+    font-size: 1rem;
+    color: var(--mainYellow);
+}
+
+@media (max-width: 770px) {
+    html {
+        font-size: 8px;
+    }
+    .Hour {
+        padding: 25% 2em 2em 2em;
+    }
+}
+
+@media (max-width: 430px) {
+    html {
+        font-size: 5px;
+    }
+    .Hour {
+        padding: 60% 2em 5em 2em;
+    }
 }

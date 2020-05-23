@@ -40,14 +40,35 @@ class Navbar extends React.Component {
     render() {
         const Timezone = this.props.Timezone;
         return (
-            <div className="navBox1">
-                <div className="navBox">
-                    <img src="/images/favicon.ico" alt="icon" />
-                    <ul className="navBar">
-                        <Link to="/" className="btn">
+            <div className="bg-col">
+                <div className="container">
+                    <div className="navBox">
+                        <img src="/images/favicon.ico" alt="icon" id="logo" />
+                        <ul className="navBar">
+                            <Link to="/" className="btn">
+                                <li>Home</li>
+                            </Link>
+                            <Link to="/Weekly" className="btn">
+                                <li>Weekly</li>
+                            </Link>
+                            <li id="locationNav">
+                                <button>
+                                    <img src="/images/Loc.svg" alt="" id="locationPin" />
+                                    {this.props.Location(Timezone)}
+                                </button>
+                            </li>
+                        </ul>
+                        <div id="menu" onClick={() => this.keyClicked()}>
+                            <div className="hamBurger line1" style={this.getStyleLine1()}></div>
+                            <div className="hamBurger line2" style={this.getStyleLine2()}></div>
+                            <div className="hamBurger line3" style={this.getStyleLine3()}></div>
+                        </div>
+                    </div>
+                    <ul id="menu-BTN" style={this.getStyle()}>
+                        <Link to="/" className="btn" onClick={() => this.keyClicked()}>
                             <li>Home</li>
                         </Link>
-                        <Link to="/Weekly" className="btn">
+                        <Link to="/Weekly" className="btn" onClick={() => this.keyClicked()}>
                             <li>Weekly</li>
                         </Link>
                         <li id="locationNav">
@@ -55,24 +76,7 @@ class Navbar extends React.Component {
                             {this.props.Location(Timezone)}
                         </li>
                     </ul>
-                    <div id="menu" onClick={() => this.keyClicked()}>
-                        <div className="hamBurger line1" style={this.getStyleLine1()}></div>
-                        <div className="hamBurger line2" style={this.getStyleLine2()}></div>
-                        <div className="hamBurger line3" style={this.getStyleLine3()}></div>
-                    </div>
                 </div>
-                <ul id="menu-BTN" style={this.getStyle()}>
-                    <Link to="/" className="btn" onClick={() => this.keyClicked()}>
-                        <li>Home</li>
-                    </Link>
-                    <Link to="/Weekly" className="btn" onClick={() => this.keyClicked()}>
-                        <li>Weekly</li>
-                    </Link>
-                    <li id="locationNav">
-                        <img src="/images/Loc.svg" alt="" id="locationPin" />
-                        {this.props.Location(Timezone)}
-                    </li>
-                </ul>
             </div>
         );
     }

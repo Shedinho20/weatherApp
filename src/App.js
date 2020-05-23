@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import Home from "./component/Home";
 import Weekly from "./component/Weekly";
+import Loader from "./component/Loader";
+
 class App extends React.Component {
     state = {
         days: [],
@@ -91,43 +93,44 @@ class App extends React.Component {
         return place;
     };
     render() {
+        if (this.state.currentWeather.length === 0) {
+            return <Loader></Loader>;
+        }
         return (
             <div className="App">
-                <Router>
-                    <Navbar Location={this.Location} Timezone={this.state.Timezone} />
-                    <Switch>
-                        <Route
-                            path="/"
-                            exact
-                            component={(props) => (
-                                <Home
-                                    {...props}
-                                    current={this.state.current}
-                                    currentWeather={this.state.currentWeather}
-                                    Timezone={this.state.Timezone}
-                                    converter={this.converter}
-                                    time={this.time}
-                                    date={this.date}
-                                    wind_speed={this.wind_speed}
-                                    Location={this.Location}
-                                />
-                            )}
-                        />
-                        <Route
-                            strict
-                            path="/Weekly"
-                            component={() => (
-                                <Weekly
-                                    days={this.state.days}
-                                    Hours={this.state.Hours}
-                                    converter={this.converter}
-                                    Weekday={this.Weekday}
-                                    wind_speed={this.wind_speed}
-                                />
-                            )}
-                        />
-                    </Switch>
-                </Router>
+                <Navbar Location={this.Location} Timezone={this.state.Timezone} />
+                <Switch>
+                    <Route
+                        path="/"
+                        exact
+                        component={(props) => (
+                            <Home
+                                {...props}
+                                current={this.state.current}
+                                currentWeather={this.state.currentWeather}
+                                Timezone={this.state.Timezone}
+                                converter={this.converter}
+                                time={this.time}
+                                date={this.date}
+                                wind_speed={this.wind_speed}
+                                Location={this.Location}
+                            />
+                        )}
+                    />
+                    <Route
+                        strict
+                        path="/Weekly"
+                        component={() => (
+                            <Weekly
+                                days={this.state.days}
+                                Hours={this.state.Hours}
+                                converter={this.converter}
+                                Weekday={this.Weekday}
+                                wind_speed={this.wind_speed}
+                            />
+                        )}
+                    />
+                </Switch>
             </div>
         );
     }
