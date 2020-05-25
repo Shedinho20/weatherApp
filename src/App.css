@@ -302,19 +302,37 @@ button:focus {
     align-items: center;
     flex-direction: column;
     background-color: var(--mainWhite);
-    margin-right: 1.5em;
     padding: 2em 1em;
     border-radius: 10px;
+    width: 95%;
 }
 .BoxHour h3 {
     font-size: 1.2rem;
     color: white;
+}
+.BoxHour img {
+    width: 80%;
 }
 .BoxHour h2 {
     font-size: 1rem;
     color: var(--mainYellow);
 }
 
+.slidecon {
+    padding: 30px;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.slidercon {
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 770px) {
     html {
         font-size: 8px;
