@@ -23,6 +23,8 @@ class Weekly extends React.Component {
 
     render() {
         const hours = this.hours();
+        console.log(hours);
+
         if (hours.length == 0) {
             return (
                 <div className=" weekly">
@@ -41,7 +43,7 @@ class Weekly extends React.Component {
             <div className=" weekly">
                 <div className="container ">
                     <div className="slidercon">
-                        <Slider slidesToShow={3} speed={300} slidesToScroll={3} infinite={false} className="slidecon">
+                        <Slider slidesToShow={2} speed={300} slidesToScroll={2} infinite={false} className="slidecon">
                             {hours.map((hour) => (
                                 <Hour hour={hour} key={hour.dt} />
                             ))}
