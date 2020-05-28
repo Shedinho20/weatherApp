@@ -1,6 +1,8 @@
 import React from "react";
 import NavbarWeekly from "./Navbar/NavbarWeekly";
 import Hour from "./Hours/Hour";
+import Slider from "react-slick";
+
 class Weekly extends React.Component {
     state = {
         info: "",
@@ -21,22 +23,41 @@ class Weekly extends React.Component {
 
     render() {
         const hours = this.hours();
+        console.log(hours);
 
-        return (
-            <div className="weekly">
-                <div className="Hour">
-                    {hours.map((hour) => (
-                        <Hour hour={hour} key={hour.dt} />
-                    ))}
+        if (hours.length == 0) {
+            return (
+                <div className=" weekly">
+                    <NavbarWeekly
+                        keyClicked={this.key}
+                        info={this.state.info}
+                        days={this.props.days}
+                        converter={this.props.converter}
+                        Weekday={this.props.Weekday}
+                        wind_speed={this.props.wind_speed}
+                    />
                 </div>
-                <NavbarWeekly
-                    keyClicked={this.key}
-                    info={this.state.info}
-                    days={this.props.days}
-                    converter={this.props.converter}
-                    Weekday={this.props.Weekday}
-                    wind_speed={this.props.wind_speed}
-                />
+            );
+        }
+        return (
+            <div className=" weekly">
+                <div className="container ">
+                    <div className="slidercon">
+                        <Slider slidesToShow={2} speed={300} slidesToScroll={2} infinite={false} className="slidecon">
+                            {hours.map((hour) => (
+                                <Hour hour={hour} key={hour.dt} />
+                            ))}
+                        </Slider>
+                    </div>
+                    <NavbarWeekly
+                        keyClicked={this.key}
+                        info={this.state.info}
+                        days={this.props.days}
+                        converter={this.props.converter}
+                        Weekday={this.props.Weekday}
+                        wind_speed={this.props.wind_speed}
+                    />
+                </div>
             </div>
         );
     }
