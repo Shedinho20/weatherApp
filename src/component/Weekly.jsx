@@ -40,6 +40,7 @@ class Weekly extends React.Component {
             );
         }
         return (
+            // I need to position the Slider at the left top corner of the screen
             <div className=" weekly">
                 <div className="container ">
                     <div className="slidercon">
