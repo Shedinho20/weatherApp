@@ -321,7 +321,7 @@ button:focus {
 .slidecon {
   width: 35%;
   padding: 30px;
-  margin: auto;
+  /* margin: auto; */
   display: flex;
   text-align: center;
   justify-content: center;
@@ -329,10 +329,11 @@ button:focus {
 
 .slidercon {
   height: 60vh;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
+
 @media (max-width: 770px) {
   html {
     font-size: 8px;
