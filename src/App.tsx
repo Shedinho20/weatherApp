@@ -6,6 +6,21 @@ import Home from "./component/Home";
 import Weekly from "./component/Weekly";
 import Loader from "./component/Loader";
 
+// interface Objectcon {
+//     days: object[];
+//     Hours: object[];
+//     current: object[];
+//     Timezone: string;
+//     currentWeather: object[];
+// }
+
+interface Data {
+    current: object;
+    daily: object[];
+    hourly: object[];
+    timezone: string;
+    weather: object[];
+}
 class App extends React.Component {
     state = {
         days: [],
@@ -28,7 +43,10 @@ class App extends React.Component {
 
     weatherData = async () => {
         const position = await this.getCoordinates();
-        const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c4bf502f01ad796b2ae93a93063fccb2`;
+        console.log(position);
+        // const url = 'https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c4bf502f01ad796b2ae93a93063fccb2`;
+        const url =
+            "https://api.openweathermap.org/data/2.5/onecall?lat=90&lon=65&appid=c4bf502f01ad796b2ae93a93063fccb2";
         const res = await fetch(url);
         const data = await res.json();
         const daily = data.daily;
@@ -37,8 +55,9 @@ class App extends React.Component {
     };
 
     // filter all the daily data gotten from the API to collect just 5
-    dailyfilter = (daily) => {
-        let dailyneed = [];
+    dailyfilter = (daily: object[]): object[] => {
+        let dailyneed: object[];
+        dailyneed = [];
         daily.forEach((element) => {
             if (dailyneed.length < 5) {
                 dailyneed.push(element);
@@ -55,37 +74,40 @@ class App extends React.Component {
     };
 
     //Set the state for the weather App
-    weatherDataSeter = (data, dailyneed) => {
+    weatherDataSeter = (data: any, dailyneed: object[]) => {
         this.setState({ days: dailyneed });
         this.setState({ Timezone: data.timezone });
         this.setState({ Hours: data.hourly });
         this.setState({ current: data.current });
         this.setState({ currentWeather: data.current.weather[0] });
+        // console.log(currentWeather);
+        console.log(data);
     };
 
-    converter = (temp) => {
+    converter = (temp: number): string => {
         return (temp - 273).toFixed(0);
     };
 
-    time = (dt) => {
+    time = (dt: number) => {
         return new Date(dt * 1000).toLocaleString("en-US", { hour: "numeric", minute: "numeric" });
     };
-    date = (dt) => {
+    date = (dt: number) => {
         return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long", month: "long", day: "numeric" });
     };
 
-    Weekday = (dt) => {
+    Weekday = (dt: number) => {
         return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long" });
     };
 
-    wind_speed = (wind_speed) => {
+    wind_speed = (wind_speed: string) => {
         return parseFloat(wind_speed).toFixed(1);
     };
 
-    Location = (loc) => {
+    Location = (loc: string): string => {
         const b = loc.split("");
-        let place = null;
-        b.forEach((element, index) => {
+        let place: string;
+        place = "";
+        b.forEach((element: string, index: number) => {
             if (element === "/") {
                 place = loc.slice(index + 1);
             }
@@ -103,7 +125,7 @@ class App extends React.Component {
                     <Route
                         path="/"
                         exact
-                        component={(props) => (
+                        component={(props: any) => (
                             <Home
                                 {...props}
                                 current={this.state.current}

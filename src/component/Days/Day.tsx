@@ -31,7 +31,7 @@ class Day extends React.Component {
         );
     }
     getStyle = () => {
-        if (this.props.info == this.props.day.dt)
+        if (this.props.info === this.props.day.dt)
             return {
                 backgroundColor: "#ffc93d",
             };
