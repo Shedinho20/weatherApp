@@ -1,7 +1,12 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import { NavLink as Link } from "react-router-dom";
 
-class Navbar extends React.Component {
+interface NavbarProps {
+  location: (loc: string) => string;
+  timezone: string;
+}
+
+class Navbar extends React.Component<NavbarProps> {
   state = {
     Isopen: false,
   };
@@ -17,28 +22,27 @@ class Navbar extends React.Component {
         transform: "translatex(0)",
       };
   };
-  getStyleLine1 = () => {
+  getStyleLine1 = (): CSSProperties | undefined => {
     if (this.state.Isopen)
       return {
         transform: "rotate(45deg) translate(5px, 5px)",
       };
   };
-  getStyleLine2 = () => {
+  getStyleLine2 = (): CSSProperties | undefined => {
     if (this.state.Isopen)
       return {
         visibility: "hidden",
       };
   };
-  getStyleLine3 = () => {
+  getStyleLine3 = (): CSSProperties | undefined => {
     if (this.state.Isopen)
       return {
-        zIndex: "3",
-
+        zIndex: 3,
         transform: "rotate(-45deg) translate(5px, -5px)",
       };
   };
   render() {
-    const Timezone = this.props.Timezone;
+    const timezone = this.props.timezone;
     return (
       <div className="bg-col">
         <div className="container">
@@ -54,7 +58,7 @@ class Navbar extends React.Component {
               <li id="locationNav">
                 <button>
                   <img src="/images/Loc.svg" alt="" id="locationPin" />
-                  {this.props.Location(Timezone)}
+                  {this.props.location(timezone)}
                 </button>
               </li>
             </ul>
@@ -86,7 +90,7 @@ class Navbar extends React.Component {
             </Link>
             <li id="locationNav">
               <img src="/images/Loc.svg" alt="" id="locationPin" />
-              {this.props.Location(Timezone)}
+              {this.props.location(timezone)}
             </li>
           </ul>
         </div>
