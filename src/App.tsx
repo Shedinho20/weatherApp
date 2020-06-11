@@ -110,7 +110,7 @@ class App extends React.Component {
     return parseFloat(wind_speed).toFixed(1);
   };
 
-  Location = (loc: string): string => {
+  location = (loc: string): string => {
     const b = loc.split("");
     let place: string;
     place = "";
@@ -127,7 +127,7 @@ class App extends React.Component {
     }
     return (
       <div className="App">
-        <Navbar Location={this.Location} Timezone={this.state.Timezone} />
+        <Navbar location={this.location} timezone={this.state.Timezone} />
         <Switch>
           <Route
             path="/"
@@ -142,7 +142,7 @@ class App extends React.Component {
                 time={this.time}
                 date={this.date}
                 wind_speed={this.wind_speed}
-                Location={this.Location}
+                location={this.location}
               />
             )}
           />
