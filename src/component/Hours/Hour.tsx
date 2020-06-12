@@ -1,7 +1,18 @@
 import React from "react";
+interface Hour {
+    hour: {
+        dt: number;
+        feels_like: number;
+        weather: [Icon];
+    };
+}
 
-class Hour extends React.Component {
-    converter = (temp) => {
+interface Icon {
+    icon: string;
+}
+
+class Hour extends React.Component<Hour> {
+    converter = (temp: number) => {
         return (temp - 273).toFixed(0);
     };
     render() {

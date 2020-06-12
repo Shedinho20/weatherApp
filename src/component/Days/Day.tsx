@@ -1,14 +1,29 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 
-class Day extends React.Component {
-    converter = (temp) => {
+interface Dayprops {
+    day: {
+        dt: number;
+        temp: Temp;
+        weather: [Icon];
+    };
+    info: number;
+    keyClicked: (dt: number) => void;
+}
+interface Icon {
+    icon: string;
+}
+interface Temp {
+    max: number;
+}
+class Day extends React.Component<Dayprops> {
+    converter = (temp: number): string => {
         return (temp - 273).toFixed(0);
     };
-    day = (dt) => {
+    day = (dt: number): string => {
         return new Date(dt * 1000).toLocaleString("en-US", { weekday: "short" });
     };
 
-    dayNum = (dt) => {
+    dayNum = (dt: number): string => {
         return new Date(dt * 1000).toLocaleString("en-US", { day: "numeric" });
     };
     render() {
@@ -30,7 +45,7 @@ class Day extends React.Component {
             </div>
         );
     }
-    getStyle = () => {
+    getStyle = (): CSSProperties | undefined => {
         if (this.props.info === this.props.day.dt)
             return {
                 backgroundColor: "#ffc93d",
