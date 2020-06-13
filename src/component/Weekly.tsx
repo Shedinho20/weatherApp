@@ -9,13 +9,8 @@ class Weekly extends React.Component<WeeklyProps> {
     hours: [],
     info: 0,
   };
-  // key = (dt: number): void => {
-  //   this.setState({ info: dt });
-  // };
 
   key = (dt: number): void => {
-    // let currenthr: object[];
-
     const day = new Date(dt * 1000).toLocaleString("en-US", {
       day: "numeric",
     });

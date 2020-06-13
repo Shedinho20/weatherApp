@@ -86,10 +86,6 @@ class App extends React.Component {
     });
   };
 
-  Weekday = (dt: number) => {
-    return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long" });
-  };
-
   windSpeed = (wind_speed: number): string => {
     return wind_speed.toFixed(1);
   };
