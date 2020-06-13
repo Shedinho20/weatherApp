@@ -6,14 +6,6 @@ import Home from "./component/Home";
 import Weekly from "./component/Weekly";
 import Loader from "./component/Loader";
 
-// interface Objectcon {
-//     days: object[];
-//     Hours: object[];
-//     current: object[];
-//     Timezone: string;
-//     currentWeather: object[];
-// }
-
 class App extends React.Component {
   state = {
     days: [],
@@ -37,11 +29,10 @@ class App extends React.Component {
   };
 
   weatherData = async () => {
-    const position = await this.getCoordinates();
-    console.log(position);
-    // const url = 'https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c4bf502f01ad796b2ae93a93063fccb2`;
-    const url =
-      "https://api.openweathermap.org/data/2.5/onecall?lat=8.6753&lon=9.0820&appid=c4bf502f01ad796b2ae93a93063fccb2";
+    let position: any;
+    position = await this.getCoordinates();
+    console.log(typeof position);
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c4bf502f01ad796b2ae93a93063fccb2`;
     const res = await fetch(url);
     const data = await res.json();
     const daily = data.daily;
@@ -75,9 +66,6 @@ class App extends React.Component {
     this.setState({ Hours: data.hourly });
     this.setState({ current: data.current });
     this.setState({ currentWeather: data.current.weather[0] });
-    // console.log(currentWeather);
-    console.log(this.state.current);
-    console.log("hello");
   };
 
   converter = (temp: number): string => {
@@ -150,7 +138,6 @@ class App extends React.Component {
                 days={this.state.days}
                 Hours={this.state.Hours}
                 converter={this.converter}
-                Weekday={this.Weekday}
                 windSpeed={this.windSpeed}
               />
             )}

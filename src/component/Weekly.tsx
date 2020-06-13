@@ -61,11 +61,11 @@ class Weekly extends React.Component<WeeklyProps> {
       <div className=" weekly">
         <div className="container ">
           <div className="slidercon">
-            {/* <Slider slidesToShow={2} speed={300} slidesToScroll={2} infinite={false} className="slidecon">
+            <Slider slidesToShow={2} speed={300} slidesToScroll={2} infinite={false} className="slidecon">
               {this.state.hours.map((hour) => (
-                <Hour hour={hour}  />
+                <Hour hour={hour} />
               ))}
-            </Slider> */}
+            </Slider>
           </div>
           <NavbarWeekly keyClicked={this.key} info={this.state.info} days={this.props.days} />
         </div>

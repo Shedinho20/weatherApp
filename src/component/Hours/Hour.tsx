@@ -1,5 +1,5 @@
 import React from "react";
-interface Hour {
+interface Hourprop {
   hour: {
     dt: number;
     feels_like: number;
@@ -11,7 +11,7 @@ interface Icon {
   icon: string;
 }
 
-class Hour extends React.Component<Hour> {
+class Hour extends React.Component<Hourprop> {
   converter = (temp: number) => {
     return (temp - 273).toFixed(0);
   };
