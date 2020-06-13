@@ -1,19 +1,19 @@
 import React from "react";
 
 interface Home {
-  current: { feels_like: number; temp: number; dt: number; wind_speed: any };
+  current: { feels_like: number; temp: number; dt: number; wind_speed: number; sunset: number; sunrise: number };
   currentWeather: { icon: string; main: string };
   Timezone: string;
   location: (loc: string) => string;
   converter: (temp: number) => string;
   time: (dt: number) => string;
   date: (dt: number) => string;
-  windSpeed: (wind_speed: string) => string;
+  windSpeed: (wind_speed: number) => string;
 }
 
 class Home extends React.Component<Home> {
   render() {
-    const { feels_like, temp, dt, wind_speed } = this.props.current;
+    const { feels_like, temp, dt, wind_speed, sunrise, sunset } = this.props.current;
     const { icon, main } = this.props.currentWeather;
     const Timezone = this.props.Timezone;
 
@@ -34,20 +34,20 @@ class Home extends React.Component<Home> {
               <h3>{main}</h3>
             </div>
 
-            {/* <div className="weatherHome2">
-                            <div id="infoHomeInner">
-                                <img src="/images/sunrise.png" alt="sunrise" />
-                                <h3>Sunrise</h3>
-                            </div>
-                            <h2>{this.props.time(sunrise)}</h2>
-                        </div> */}
-            {/* <div className="weatherHome2">
-                            <div id="infoHomeInner">
-                                <img src="/images/sunset.png" alt="sunrise" />
-                                <h3>Sunset</h3>
-                            </div>
-                            <h2>{this.props.time(sunset)}</h2>
-                        </div> */}
+            <div className="weatherHome2">
+              <div id="infoHomeInner">
+                <img src="/images/sunrise.png" alt="sunrise" />
+                <h3>Sunrise</h3>
+              </div>
+              <h2>{this.props.time(sunrise)}</h2>
+            </div>
+            <div className="weatherHome2">
+              <div id="infoHomeInner">
+                <img src="/images/sunset.png" alt="sunrise" />
+                <h3>Sunset</h3>
+              </div>
+              <h2>{this.props.time(sunset)}</h2>
+            </div>
             <div className="weatherHome2">
               <div id="infoHomeInner">
                 <img src="/images/wind.png" alt="sunrise" />

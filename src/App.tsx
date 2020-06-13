@@ -40,7 +40,8 @@ class App extends React.Component {
     const position = await this.getCoordinates();
     console.log(position);
     // const url = 'https://api.openweathermap.org/data/2.5/onecall?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=c4bf502f01ad796b2ae93a93063fccb2`;
-    const url = "https://api.openweathermap.org/data/2.5/onecall?lat=90&lon=65&appid=c4bf502f01ad796b2ae93a93063fccb2";
+    const url =
+      "https://api.openweathermap.org/data/2.5/onecall?lat=8.6753&lon=9.0820&appid=c4bf502f01ad796b2ae93a93063fccb2";
     const res = await fetch(url);
     const data = await res.json();
     const daily = data.daily;
@@ -75,7 +76,7 @@ class App extends React.Component {
     this.setState({ current: data.current });
     this.setState({ currentWeather: data.current.weather[0] });
     // console.log(currentWeather);
-    console.log(this.state.days);
+    console.log(this.state.current);
     console.log("hello");
   };
 
@@ -101,15 +102,14 @@ class App extends React.Component {
     return new Date(dt * 1000).toLocaleString("en-US", { weekday: "long" });
   };
 
-  windSpeed = (wind_speed: any): string => {
-    return parseFloat(wind_speed).toFixed(1);
+  windSpeed = (wind_speed: number): string => {
+    return wind_speed.toFixed(1);
   };
 
-  location = (loc: string) => {
+  location = (loc: string): string => {
     const b = loc.split("");
-    let place: string;
-    place = "";
-    b.forEach((element: string, index: number) => {
+    let place = "";
+    b.forEach((element, index) => {
       if (element === "/") {
         place = loc.slice(index + 1);
       }
