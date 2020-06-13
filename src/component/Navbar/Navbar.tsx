@@ -1,10 +1,6 @@
 import React, { CSSProperties } from "react";
 import { NavLink as Link } from "react-router-dom";
-
-interface NavbarProps {
-  location: (loc: string) => string;
-  timezone: string;
-}
+import { NavbarProps } from "../Interface";
 
 class Navbar extends React.Component<NavbarProps> {
   state = {

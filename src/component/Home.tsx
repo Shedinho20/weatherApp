@@ -1,17 +1,7 @@
 import React from "react";
+import { Homeprops } from "./Interface";
 
-interface Home {
-  current: { feels_like: number; temp: number; dt: number; wind_speed: number; sunset: number; sunrise: number };
-  currentWeather: { icon: string; main: string };
-  Timezone: string;
-  location: (loc: string) => string;
-  converter: (temp: number) => string;
-  time: (dt: number) => string;
-  date: (dt: number) => string;
-  windSpeed: (wind_speed: number) => string;
-}
-
-class Home extends React.Component<Home> {
+class Home extends React.Component<Homeprops> {
   render() {
     const { feels_like, temp, dt, wind_speed, sunrise, sunset } = this.props.current;
     const { icon, main } = this.props.currentWeather;

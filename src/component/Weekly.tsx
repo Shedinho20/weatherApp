@@ -2,27 +2,7 @@ import React from "react";
 import NavbarWeekly from "./Navbar/NavbarWeekly";
 import Hour from "./Hours/Hour";
 import Slider from "react-slick";
-
-interface WeeklyProps {
-  Hours: {
-    dt: number;
-    feels_like: number;
-    weather: [Icon];
-  }[];
-  converter: (temp: number) => string;
-  days: {
-    dt: number;
-    temp: Temp;
-    weather: [Icon];
-  }[];
-}
-
-interface Icon {
-  icon: string;
-}
-interface Temp {
-  max: number;
-}
+import { WeeklyProps } from "./Interface";
 
 class Weekly extends React.Component<WeeklyProps> {
   state = {
@@ -52,7 +32,12 @@ class Weekly extends React.Component<WeeklyProps> {
     if (this.state.hours.length === 0) {
       return (
         <div className=" weekly">
-          <NavbarWeekly keyClicked={this.key} info={this.state.info} days={this.props.days} />
+          <NavbarWeekly
+            keyClicked={this.key}
+            info={this.state.info}
+            days={this.props.days}
+            converter={this.props.converter}
+          />
         </div>
       );
     }
@@ -67,7 +52,12 @@ class Weekly extends React.Component<WeeklyProps> {
               ))}
             </Slider>
           </div>
-          <NavbarWeekly keyClicked={this.key} info={this.state.info} days={this.props.days} />
+          <NavbarWeekly
+            keyClicked={this.key}
+            info={this.state.info}
+            days={this.props.days}
+            converter={this.props.converter}
+          />
         </div>
       </div>
     );

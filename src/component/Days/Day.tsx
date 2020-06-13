@@ -1,24 +1,7 @@
 import React, { CSSProperties } from "react";
+import { Dayprops } from "../Interface";
 
-interface Dayprops {
-  day: {
-    dt: number;
-    temp: Temp;
-    weather: [Icon];
-  };
-  info: number;
-  keyClicked: (dt: number) => void;
-}
-interface Icon {
-  icon: string;
-}
-interface Temp {
-  max: number;
-}
 class Day extends React.Component<Dayprops> {
-  converter = (temp: number): string => {
-    return (temp - 273).toFixed(0);
-  };
   day = (dt: number): string => {
     return new Date(dt * 1000).toLocaleString("en-US", { weekday: "short" });
   };
@@ -39,7 +22,7 @@ class Day extends React.Component<Dayprops> {
           </h3>
           <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon"></img>
           <h2>
-            {this.converter(max)} <span>°C</span>
+            {this.props.converter(max)} <span>°C</span>
           </h2>
         </div>
       </div>

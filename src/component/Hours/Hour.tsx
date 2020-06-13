@@ -1,15 +1,5 @@
 import React from "react";
-interface Hourprop {
-  hour: {
-    dt: number;
-    feels_like: number;
-    weather: [Icon];
-  };
-}
-
-interface Icon {
-  icon: string;
-}
+import { Hourprop } from "../Interface";
 
 class Hour extends React.Component<Hourprop> {
   converter = (temp: number) => {
