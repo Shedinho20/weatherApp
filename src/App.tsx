@@ -5,8 +5,9 @@ import Navbar from "./component/Navbar/Navbar";
 import Home from "./component/Home";
 import Weekly from "./component/Weekly";
 import Loader from "./component/Loader";
+import { AppProps, State } from "./component/Interface";
 
-class App extends React.Component {
+class App extends React.Component<AppProps, State> {
   state = {
     days: [],
     Hours: [],

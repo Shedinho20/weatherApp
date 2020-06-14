@@ -59,6 +59,15 @@ export interface NavbarProps {
   timezone: string;
 }
 
+export interface State {
+  days: object[];
+  Timezone: string;
+  Hours: object[];
+  current: object[];
+  currentWeather: object[];
+}
+export interface AppProps {}
+
 interface Icon {
   icon: string;
 }

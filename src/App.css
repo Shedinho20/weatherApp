@@ -328,7 +328,38 @@ button:focus {
   justify-content: center;
   align-items: center;
 }
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--mainblue);
+}
 
+.closemenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 70%;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--mainWhite);
+  cursor: pointer;
+}
+.navMob {
+  display: flex;
+  background-color: yellow;
+  flex-direction: column;
+  height: 60%;
+  justify-content: space-between;
+  align-items: center;
+}
 @media (max-width: 770px) {
   html {
     font-size: 12px;

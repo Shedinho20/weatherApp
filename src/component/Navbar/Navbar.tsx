@@ -63,18 +63,6 @@ class Navbar extends React.Component<NavbarProps> {
               <div className="hamBurger line3" style={this.getStyleLine3()}></div>
             </div>
           </div>
-          <ul id="menu-BTN" style={this.getStyle()}>
-            <Link to="/" className="btn" onClick={() => this.keyClicked()}>
-              <li>Home</li>
-            </Link>
-            <Link to="/Weekly" className="btn" onClick={() => this.keyClicked()}>
-              <li>Weekly</li>
-            </Link>
-            <li id="locationNav">
-              <img src="/images/Loc.svg" alt="" id="locationPin" />
-              {this.props.location(timezone)}
-            </li>
-          </ul>
         </div>
       </div>
     );
