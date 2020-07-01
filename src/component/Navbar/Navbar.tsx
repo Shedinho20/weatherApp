@@ -32,7 +32,7 @@ class Navbar extends React.Component<NavbarProps> {
   getStyleLine3 = (): CSSProperties | undefined => {
     if (this.state.Isopen)
       return {
-        zIndex: 3,
+        zIndex: 4,
         transform: "rotate(-45deg) translate(5px, -5px)",
       };
   };
@@ -57,13 +57,27 @@ class Navbar extends React.Component<NavbarProps> {
                 </button>
               </li>
             </ul>
-            <div id="menu" onClick={() => this.keyClicked()}>
-              <div className="hamBurger line1" style={this.getStyleLine1()}></div>
-              <div className="hamBurger line2" style={this.getStyleLine2()}></div>
-              <div className="hamBurger line3" style={this.getStyleLine3()}></div>
-            </div>
+            {/* <div id="menu" onClick={() => this.keyClicked()}>
+              <div className="hamBurger" style={this.getStyleLine1()}></div>
+              <div className="hamBurger" style={this.getStyleLine2()}></div>
+              <div className="hamBurger" style={this.getStyleLine3()}></div>
+            </div> */}
           </div>
         </div>
+
+        {/* <div className="navmob" style={this.getStyle()}>
+          <ul>
+            <Link to="/" className="btn" onClick={() => this.keyClicked()}>
+              <li>Home</li>
+            </Link>
+            <Link to="/Weekly" className="btn" onClick={() => this.keyClicked()}>
+              <li>Weekly</li>
+            </Link>
+            <li>
+              <button disabled>{this.props.location(timezone)}</button>
+            </li>
+          </ul>
+        </div> */}
       </div>
     );
   }

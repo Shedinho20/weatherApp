@@ -10,6 +10,7 @@ export interface WeeklyProps {
     temp: Temp;
     weather: [Icon];
   }[];
+  windSpeed: (wind_speed: number) => string;
 }
 
 export interface NavbarWekly {
@@ -17,41 +18,58 @@ export interface NavbarWekly {
   converter: (temp: number) => string;
 
   info: number;
-  days: {
-    dt: number;
-    temp: Temp;
-    weather: [Icon];
-  }[];
+  days: Day[];
 }
 
 export interface Homeprops {
-  current: { feels_like: number; temp: number; dt: number; wind_speed: number; sunset: number; sunrise: number };
-  currentWeather: { icon: string; main: string };
+  current: Current;
   Timezone: string;
   location: (loc: string) => string;
   converter: (temp: number) => string;
   time: (dt: number) => string;
   date: (dt: number) => string;
   windSpeed: (wind_speed: number) => string;
+  fetchWeather: any;
+  weather: any;
 }
-
+interface CurrentWeather {
+  icon: string;
+  main: string;
+}
+interface Current {
+  feels_like: number;
+  temp: number;
+  dt: number;
+  wind_speed: number;
+  sunset: number;
+  sunrise: number;
+  weather: Main[];
+}
 export interface Dayprops {
-  day: {
-    dt: number;
-    temp: Temp;
-    weather: [Icon];
-  };
+  day: Day;
   info: number;
   keyClicked: (dt: number) => void;
   converter: (temp: number) => string;
 }
 
+interface Day {
+  dt: number;
+  temp: Temp;
+  weather: [Icon];
+}
+interface Main {
+  main: string;
+  icon: string;
+}
+
 export interface Hourprop {
-  hour: {
-    dt: number;
-    feels_like: number;
-    weather: [Icon];
-  };
+  hour: Hour;
+}
+
+interface Hour {
+  dt: number;
+  feels_like: number;
+  weather: [Icon];
 }
 
 export interface NavbarProps {
@@ -60,17 +78,39 @@ export interface NavbarProps {
 }
 
 export interface State {
-  days: object[];
+  days: Day[];
   Timezone: string;
-  Hours: object[];
-  current: object[];
-  currentWeather: object[];
+  Hours: Hour[];
+  current: Current[];
 }
 export interface AppProps {}
+
+export interface Data {
+  timezone: string;
+  hourly: Hour[];
+  current: Current[];
+  daily: Day[];
+}
 
 interface Icon {
   icon: string;
 }
+
 interface Temp {
   max: number;
+}
+
+export interface Position {
+  timestamp: number;
+  coords: Coords;
+}
+
+interface Coords {
+  accuracy: number;
+  latitude: number;
+  longitude: number;
+  altitudeAccuracy: null;
+  heading: null;
+  altitude: null;
+  speed: null;
 }

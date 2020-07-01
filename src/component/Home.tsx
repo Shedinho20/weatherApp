@@ -1,12 +1,23 @@
 import React from "react";
 import { Homeprops } from "./Interface";
+import { connect } from "react-redux";
+import { fetchWeather } from "../action/weatherAction";
 
 class Home extends React.Component<Homeprops> {
+  componentDidMount() {
+    this.checkGeo();
+  }
+
+  checkGeo = () => {
+    if ("geolocation" in navigator) {
+      this.props.fetchWeather();
+    }
+  };
+
   render() {
     const { feels_like, temp, dt, wind_speed, sunrise, sunset } = this.props.current;
-    const { icon, main } = this.props.currentWeather;
+    const { icon, main } = this.props.weather;
     const Timezone = this.props.Timezone;
-
     return (
       <div className="home">
         <div className="homeBanner container">
@@ -43,7 +54,7 @@ class Home extends React.Component<Homeprops> {
                 <img src="/images/wind.png" alt="sunrise" />
                 <h3>Wind</h3>
               </div>
-              <h2>{this.props.windSpeed(wind_speed)} M/S</h2>
+              <h2>{wind_speed} M/S</h2>
             </div>
           </div>
         </div>
@@ -52,4 +63,8 @@ class Home extends React.Component<Homeprops> {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  current: state.weather.current,
+  weather: state.weather.weather,
+});
+export default connect(mapStateToProps, { fetchWeather })(Home);
