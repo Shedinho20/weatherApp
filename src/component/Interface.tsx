@@ -15,8 +15,6 @@ export interface WeeklyProps {
 
 export interface NavbarWekly {
   keyClicked: (dt: number) => void;
-  converter: (temp: number) => string;
-
   info: number;
   days: Day[];
 }
@@ -36,7 +34,12 @@ interface CurrentWeather {
   icon: string;
   main: string;
 }
-interface Current {
+export interface AppState {
+  fetchWeather: any;
+  current: Current;
+  isLoading: boolean;
+}
+export interface Current {
   feels_like: number;
   temp: number;
   dt: number;
@@ -49,10 +52,9 @@ export interface Dayprops {
   day: Day;
   info: number;
   keyClicked: (dt: number) => void;
-  converter: (temp: number) => string;
 }
 
-interface Day {
+export interface Day {
   dt: number;
   temp: Temp;
   weather: [Icon];
@@ -73,7 +75,7 @@ interface Hour {
 }
 
 export interface NavbarProps {
-  location: (loc: string) => string;
+  // location: (loc: string) => string;
   timezone: string;
 }
 
@@ -82,6 +84,8 @@ export interface State {
   Timezone: string;
   Hours: Hour[];
   current: Current[];
+  weather: any;
+  isLoading: boolean;
 }
 export interface AppProps {}
 
@@ -113,4 +117,17 @@ interface Coords {
   heading: null;
   altitude: null;
   speed: null;
+}
+
+export interface Dispatch {
+  type: string;
+  payload: Payload;
+}
+export interface Payload {
+  days: Day[];
+  Timezone: string;
+  current: Current;
+  weather: any;
+  Hours: Hour;
+  isloading: boolean;
 }

@@ -1,6 +1,8 @@
 import React, { CSSProperties } from "react";
 import { NavLink as Link } from "react-router-dom";
-import { NavbarProps } from "../Interface";
+import { NavbarProps, State } from "../Interface";
+import { connect } from "react-redux";
+import { location } from "../converter";
 
 class Navbar extends React.Component<NavbarProps> {
   state = {
@@ -53,34 +55,18 @@ class Navbar extends React.Component<NavbarProps> {
               <li id="locationNav">
                 <button>
                   <img src="/images/Loc.svg" alt="" id="locationPin" />
-                  {this.props.location(timezone)}
+                  {location(timezone)}
                 </button>
               </li>
             </ul>
-            {/* <div id="menu" onClick={() => this.keyClicked()}>
-              <div className="hamBurger" style={this.getStyleLine1()}></div>
-              <div className="hamBurger" style={this.getStyleLine2()}></div>
-              <div className="hamBurger" style={this.getStyleLine3()}></div>
-            </div> */}
           </div>
         </div>
-
-        {/* <div className="navmob" style={this.getStyle()}>
-          <ul>
-            <Link to="/" className="btn" onClick={() => this.keyClicked()}>
-              <li>Home</li>
-            </Link>
-            <Link to="/Weekly" className="btn" onClick={() => this.keyClicked()}>
-              <li>Weekly</li>
-            </Link>
-            <li>
-              <button disabled>{this.props.location(timezone)}</button>
-            </li>
-          </ul>
-        </div> */}
       </div>
     );
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state: State) => ({
+  timezone: state.weather.Timezone,
+});
+export default connect(mapStateToProps)(Navbar);
