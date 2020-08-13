@@ -75,7 +75,6 @@ interface Hour {
 }
 
 export interface NavbarProps {
-  // location: (loc: string) => string;
   timezone: string;
 }
 
@@ -87,14 +86,6 @@ export interface State {
   weather: any;
   isLoading: boolean;
 }
-export interface AppProps {}
-
-export interface Data {
-  timezone: string;
-  hourly: Hour[];
-  current: Current[];
-  daily: Day[];
-}
 
 interface Icon {
   icon: string;
@@ -104,25 +95,6 @@ interface Temp {
   max: number;
 }
 
-export interface Position {
-  timestamp: number;
-  coords: Coords;
-}
-
-interface Coords {
-  accuracy: number;
-  latitude: number;
-  longitude: number;
-  altitudeAccuracy: null;
-  heading: null;
-  altitude: null;
-  speed: null;
-}
-
-export interface Dispatch {
-  type: string;
-  payload: Payload;
-}
 export interface Payload {
   days: Day[];
   Timezone: string;

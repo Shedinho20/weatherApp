@@ -1,5 +1,6 @@
 import { FETCH_WEATHER, FETCHWEATHER } from "../action/constant";
 import { State } from "../component/Interface";
+
 const initialstate: State = {
   days: [],
   current: [],

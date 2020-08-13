@@ -8,20 +8,29 @@ import Loader from "./component/Loader";
 import { connect } from "react-redux";
 import { fetchWeather } from "./action/weatherAction";
 import { AppState, State } from "./component/Interface";
+import { getCoordinates } from "./component/converter";
 
 class App extends React.Component<AppState> {
   componentDidMount() {
     this.checkGeo();
-    this.setState({ isLoading: this.props.isLoading });
+    // this.setState({ isLoading: this.props.isLoading });
   }
 
-  checkGeo = (): void => {
+  async checkGeo() {
     if ("geolocation" in navigator) {
-      this.props.fetchWeather();
+      const position = await this.postion();
+      this.props.fetchWeather(position);
     }
-  };
+  }
+
+  async postion() {
+    let position: any;
+    position = await getCoordinates();
+    return position;
+  }
+
   render() {
-    if (this.props.isLoading === undefined) {
+    if (this.props.isLoading === true) {
       return <Loader></Loader>;
     }
     return (
@@ -36,8 +45,16 @@ class App extends React.Component<AppState> {
   }
 }
 
-const mapStateToProps = (state: State) => ({
-  current: state.weather.current,
-  isLoading: state.weather.isLoading,
-});
-export default connect(mapStateToProps, { fetchWeather })(App);
+const mapStateToProps = (state: State) => {
+  return {
+    current: state.weather.current,
+    isLoading: state.weather.isLoading,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    fetchWeather: (position: any) => dispatch(fetchWeather(position)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(App);
