@@ -1,6 +1,8 @@
 import React, { CSSProperties } from "react";
 import { NavLink as Link } from "react-router-dom";
-import { NavbarProps } from "../Interface";
+import { NavbarProps, State } from "../Interface";
+import { connect } from "react-redux";
+import { location } from "../converter";
 
 class Navbar extends React.Component<NavbarProps> {
   state = {
@@ -32,7 +34,7 @@ class Navbar extends React.Component<NavbarProps> {
   getStyleLine3 = (): CSSProperties | undefined => {
     if (this.state.Isopen)
       return {
-        zIndex: 3,
+        zIndex: 4,
         transform: "rotate(-45deg) translate(5px, -5px)",
       };
   };
@@ -53,15 +55,10 @@ class Navbar extends React.Component<NavbarProps> {
               <li id="locationNav">
                 <button>
                   <img src="/images/Loc.svg" alt="" id="locationPin" />
-                  {this.props.location(timezone)}
+                  {location(timezone)}
                 </button>
               </li>
             </ul>
-            <div id="menu" onClick={() => this.keyClicked()}>
-              <div className="hamBurger line1" style={this.getStyleLine1()}></div>
-              <div className="hamBurger line2" style={this.getStyleLine2()}></div>
-              <div className="hamBurger line3" style={this.getStyleLine3()}></div>
-            </div>
           </div>
         </div>
       </div>
@@ -69,4 +66,7 @@ class Navbar extends React.Component<NavbarProps> {
   }
 }
 
-export default Navbar;
+const mapStateToProps = (state: State) => ({
+  timezone: state.weather.Timezone,
+});
+export default connect(mapStateToProps)(Navbar);

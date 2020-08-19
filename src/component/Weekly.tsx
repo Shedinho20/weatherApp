@@ -2,7 +2,8 @@ import React from "react";
 import NavbarWeekly from "./Navbar/NavbarWeekly";
 import Hour from "./Hours/Hour";
 import Slider from "react-slick";
-import { WeeklyProps } from "./Interface";
+import { WeeklyProps, State } from "./Interface";
+import { connect } from "react-redux";
 
 class Weekly extends React.Component<WeeklyProps> {
   state = {
@@ -27,12 +28,7 @@ class Weekly extends React.Component<WeeklyProps> {
     if (this.state.hours.length === 0) {
       return (
         <div className=" weekly">
-          <NavbarWeekly
-            keyClicked={this.key}
-            info={this.state.info}
-            days={this.props.days}
-            converter={this.props.converter}
-          />
+          <NavbarWeekly keyClicked={this.key} info={this.state.info} />
         </div>
       );
     }
@@ -47,16 +43,14 @@ class Weekly extends React.Component<WeeklyProps> {
               ))}
             </Slider>
           </div>
-          <NavbarWeekly
-            keyClicked={this.key}
-            info={this.state.info}
-            days={this.props.days}
-            converter={this.props.converter}
-          />
+          <NavbarWeekly keyClicked={this.key} info={this.state.info} />
         </div>
       </div>
     );
   }
 }
 
-export default Weekly;
+const mapStateToProps = (state: State) => ({
+  Hours: state.weather.Hours,
+});
+export default connect(mapStateToProps)(Weekly);
